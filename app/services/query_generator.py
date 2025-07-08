@@ -19,5 +19,5 @@ def generate_query(job_description: str, category: str) -> str:
         temperature=0.0,
         max_tokens=1000
     )
-    boolean_query = response["choices"][0]["message"]["content"].strip()
+    boolean_query = category + "-> " + response["choices"][0]["message"]["content"].strip()
     return boolean_query

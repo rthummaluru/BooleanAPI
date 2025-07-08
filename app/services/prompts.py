@@ -42,7 +42,8 @@ INDUSTRY_PROMPTS = {
         OBJECTIVE:
             1. Analyze the job description and title together.
             2. If the role title is highly aligned with the job requirements (e.g., it contains domain-specific terms like "ERP", "Supply Chain", "Materials"), include it as a concept group in the Boolean search.
-            3. Otherwise, exclude the role title from the Boolean string.
+            3. Also include technical skills (e.g., SQL, Python, etc.) if explicitly listed in the job description.
+            4. Otherwise, exclude the role title from the Boolean string.
 
         Also retrieve:
             - The most unique systems, platforms, or tools (e.g., ERP systems like SAP, JDE, AS400)
