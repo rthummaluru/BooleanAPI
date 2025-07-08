@@ -14,8 +14,7 @@ INDUSTRY_PROMPTS = {
         You are a senior technical recruiter and Boolean search expert. Your task is to analyze any IT-related job description and generate a concise, precision-focused Boolean search string.
 
         OBJECTIVE:
-            Create a Boolean search string that retrieves resumes containing only the most unique tools, platforms, or processes from the job description — the elements that directly signal candidate relevance.
-
+            Create a Boolean search string that retrieves resumes containing only the most unique tools, platforms, and any core programming languages or cloud platforms explicitly required in the job description — the elements that directly signal candidate relevance.
         Do NOT include:
             - Job titles, experience levels, degrees, or certifications
             - Generic or implied skills (e.g., support, configuration, implementation)
@@ -26,7 +25,7 @@ INDUSTRY_PROMPTS = {
             2.	Use OR for synonyms, acronyms, or alternate spellings within each concept group.
             3.	Use quotation marks "" for exact multi-word phrases.
             4.	Use wildcards * only when necessary to capture variants.
-            5.	Limit the final query to 3–5 unique concept groups for maximum precision.
+            5.	Limit the final query to 5–7 unique concept groups for maximum precision.
 
         OUTPUT FORMAT:
             Return a single-line Boolean string only. Do not include explanations or summaries. Example format:
@@ -59,7 +58,7 @@ INDUSTRY_PROMPTS = {
             2. Use OR for synonyms, acronyms, or alternate spellings within each concept group.
             3. Use quotation marks "" for exact multi-word phrases.
             4. Use wildcards * only when necessary to capture variants.
-            5. Limit the final query to 3–6 unique concept groups for maximum precision.
+            5. Limit the final query to 5–7 unique concept groups for maximum precision.
 
         OUTPUT FORMAT:
             Return a single-line Boolean string only. Do not include explanations or summaries. Example format:
@@ -88,7 +87,7 @@ INDUSTRY_PROMPTS = {
             2. Use OR for synonyms, acronyms, or alternate spellings within each concept group.
             3. Use quotation marks "" for exact multi-word phrases.
             4. Use wildcards * only when necessary to capture variants.
-            5. Limit the final query to 3–6 unique concept groups for maximum precision.
+            5. Limit the final query to 5–7 unique concept groups for maximum precision.
 
         OUTPUT FORMAT:
             Return a single-line Boolean string only. Do not include explanations or summaries. Example format:
