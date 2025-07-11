@@ -1,5 +1,6 @@
 fastapi
 uvicorn[standard]
-openai==0.28
+openai
 pydantic
 python-dotenv
+google-generativeai
