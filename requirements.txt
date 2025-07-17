@@ -3,4 +3,5 @@ uvicorn[standard]
 openai
 pydantic
 python-dotenv
-google-generativeai
+google-genai
+protobuf==4.25.3   

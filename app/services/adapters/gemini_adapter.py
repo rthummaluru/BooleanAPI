@@ -7,7 +7,6 @@ from google.genai import types
 
 
 load_dotenv()
-
 class GeminiAdapter(BaseAdapter):
     """
     Adapter for Gemini API.
@@ -25,10 +24,9 @@ class GeminiAdapter(BaseAdapter):
         user_prompt = f"Job description: {job_description}"
         response = self.client.models.generate_content(
             model=self.model,
+            contents=[user_prompt],
             config=types.GenerateContentConfig(
                 system_instruction=industry_prompt,
-                contents=[user_prompt],
-                max_tokens=500,
                 temperature=0.0,
             ),
         )

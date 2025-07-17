@@ -1,11 +1,12 @@
 from fastapi import APIRouter, HTTPException
 from app.models import JobDescriptionRequest, BooleanQueryResponse
-from app.services.classifier import classify_job_description
+from app.services.classifier import Classifier
 from app.services.model_manager import ModelManager
 import logging
 
 
 router = APIRouter()
+classifier = Classifier()
 logging.basicConfig(level=logging.INFO)
 
 @router.post("/generate-query", response_model=BooleanQueryResponse)
@@ -17,7 +18,7 @@ async def generate_boolean_query_endpoint(request: JobDescriptionRequest):
     try:
         logging.info(f"Classifying job description")
         # Classify the job description
-        industry = classify_job_description(request.job_description)
+        industry = classifier.classify_job_description(request.job_description)
         print(f"Industry: {industry}")
 
         logging.info(f"Initializing model manager")
@@ -27,7 +28,7 @@ async def generate_boolean_query_endpoint(request: JobDescriptionRequest):
 
         logging.info(f"Generating Boolean query")
         # Generate the Boolean query
-        boolean_query = adapter.generate_query(request.job_description, industry)
+        boolean_query = adapter.generate_boolean_query(request.job_description, industry)
         return BooleanQueryResponse(boolean_query=boolean_query)
         logging.info(f"Boolean query generated successfully")
     except Exception as e:
