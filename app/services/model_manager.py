@@ -1,7 +1,7 @@
 from app.services.adapters.base_adapter import BaseAdapter
 from app.services.adapters.openai_adapter import OpenAIAdapter
 from app.services.adapters.gemini_adapter import GeminiAdapter
-
+from app.services.adapters.claude_adapter import ClaudeAdapter
 class ModelManager:
     """
     Manager for selecting and initializing the appropriate AI model adapter.
@@ -18,6 +18,8 @@ class ModelManager:
             return OpenAIAdapter()
         elif self.model_type == "gemini":
             return GeminiAdapter()
+        elif self.model_type == "claude":
+            return ClaudeAdapter()
         else:
             raise ValueError(f"Invalid model type: {self.model_type}")
     
