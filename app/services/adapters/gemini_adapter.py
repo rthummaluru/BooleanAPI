@@ -30,5 +30,5 @@ class GeminiAdapter(BaseAdapter):
                 temperature=0.0,
             ),
         )
-        boolean_query = response.text.strip()
+        boolean_query = "gemini: " + response.text.strip()
         return boolean_query

@@ -30,5 +30,5 @@ class OpenAIAdapter(BaseAdapter):
             )
         except Exception as e:
             raise RuntimeError(f"OpenAI API call failed: {e}")
-        boolean_query = response.choices[0].message.content.strip()
+        boolean_query = 'openai: ' + response.choices[0].message.content.strip()
         return boolean_query
