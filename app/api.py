@@ -4,7 +4,6 @@ from app.services.classifier import Classifier
 from app.services.model_manager import ModelManager
 import logging
 
-
 router = APIRouter()
 classifier = Classifier()
 logging.basicConfig(level=logging.INFO)

@@ -11,26 +11,49 @@ CLASSIFIER_PROMPT = (
 INDUSTRY_PROMPTS = {
     "IT": (
         """
-        You are a senior technical recruiter and Boolean search expert. Your task is to analyze any IT-related job description and generate a concise, precision-focused Boolean search string.
+       You are a senior technical recruiter and Boolean search expert. Your task is to analyze any IT-related job description and produce a precise Boolean search string by following these steps:
 
-        OBJECTIVE:
-            Create a Boolean search string that retrieves resumes containing only the most unique tools, platforms, and any core programming languages or cloud platforms explicitly required in the job description — the elements that directly signal candidate relevance.
-        Do NOT include:
-            - Job titles, experience levels, degrees, or certifications
-            - Generic or implied skills (e.g., support, configuration, implementation)
-            - Exclusion logic (e.g., NOT clauses)
+        STEP 1: Extract Required Skills
 
-        BOOLEAN RULES:
-            1.	Use AND to combine mandatory unique concepts.
-            2.	Use OR for synonyms, acronyms, or alternate spellings within each concept group.
-            3.	Use quotation marks "" for exact multi-word phrases.
-            4.	Use wildcards * only when necessary to capture variants.
-            5.	Limit the final query to 5–7 unique concept groups for maximum precision.
+        Review the job description and extract only the REQUIRED or MUST-HAVE skills, tools, platforms, technologies, and core programming languages.
 
-        OUTPUT FORMAT:
-            Return a single-line Boolean string only. Do not include explanations or summaries. Example format:
+        Ignore all skills labeled as “preferred,” “nice to have,” “optional,” or “bonus.”
 
-            ("UniqueTool1" OR "Alias1") AND ("UniqueProcess1" OR "Alias2") AND ("UniquePlatform1" OR "Alias3")
+        Return the required skills as a comma-separated list.
+
+        *** IF THERE IS NO INDICATION OF REQUIRED SKILLS VS PREFERRED SKILLS, JUST ASSUME ALL SKILLS ARE REQUIRED ***
+
+        Example Output (Step 1):
+
+        Copy
+        Edit
+        Python, AWS, Kubernetes, Docker, PostgreSQL
+        STEP 2: Build Boolean Search String
+
+        Using only the REQUIRED skills from Step 1, construct a recruiter-grade Boolean search string.
+
+        Follow these Boolean rules:
+
+        Use AND to combine unique concepts.
+
+        Use OR for synonyms, acronyms, or alternate spellings within each concept group.
+
+        Use quotation marks "" for exact multi-word phrases.
+
+        Use wildcards * only when necessary to capture variants.
+
+        Limit the final query to 5–7 unique concept groups for maximum precision.
+
+        Do not include job titles, experience levels, degrees, certifications, or exclusion logic (e.g., NOT clauses).
+
+        Example Output (Step 2):
+
+        arduino
+        Copy
+        Edit
+        ("Python" OR "Py") AND ("AWS" OR "Amazon Web Services") AND ("Kubernetes") AND ("Docker") AND ("PostgreSQL" OR "Postgres")
+        FINAL OUTPUT FORMAT:
+        Return only the Boolean search string from Step 2. Do not include explanations or summaries.
         """
     ),
     
